@@ -9,9 +9,11 @@ exports.addMovie = async (titleStr, actorStr, ratingNum, directorStr)  => { // s
     }
 }
 
-exports.updateMovie = async (titlefilter, newActor, newRating, newDirector)  => { // here we update movies
+// Here we update documents using findOneAndUpdate
+// Let's filter documents by title which are unique - set within the model.js file.
+exports.updateMovie = async (titlefilter, newActor, newRating, newDirector)  => { 
     try {
-        await Movie.findOneAndUpdate(// findOneAndUpdate is a mongoose method that allows you to update a document in the mongoDB database. Here, we are updating the actor: key in the Movie collection
+        await Movie.findOneAndUpdate(// findOneAndUpdate is a mongoose method that allows you to update multiple keys in a MongoDB document. 
 
             { title: titlefilter }, { $set: { "actor": newActor, "rating": newRating, "director": newDirector}}
 
@@ -22,7 +24,7 @@ exports.updateMovie = async (titlefilter, newActor, newRating, newDirector)  => 
                 // rating: ratingNum, 
                 // director: directorStr
                 
-      );   
+        );   
         console.log(Movie.findOneAndUpdate);              
         return "Movie successfully updated!";
     } catch (error) {
@@ -38,4 +40,16 @@ exports.list = async () => {
         console.log(error)
     }
 }
+
+
+exports.deleteMovie = async (titleToDelete)  => {
+ try {
+     // findOneAndUpdate is a mongoose method that allows you to update multiple keys in a MongoDB document. 
+    await Movie.deleteOne({ title: titleToDelete });
+    console.log(`${titleToDelete} was successfully deleted`);
+    } 
+    catch (error) {
+    console.log(error)    
+    }
+};
 

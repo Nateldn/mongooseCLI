@@ -2,7 +2,7 @@
 require("./db/connection"); // will run the connection file in its entirety
 const { default: mongoose } = require("mongoose");
 const yargs = require("yargs");
-const { addMovie, list, updateMovie } = require("./movie/functions");
+const { addMovie, list, updateMovie, deleteMovie, titleToDelete } = require("./movie/functions");
 
 // process.env.PRODUCTION && connection(process.env.MONGO_URI)
 
@@ -17,7 +17,15 @@ const app  = async (yargsObj) => {
         } else if (yargsObj.update) {
             // this allows us to update items in the movie collection 
             console.log(await updateMovie(yargsObj.title, yargsObj.actor, yargsObj.rating, yargsObj.director));
-        } else {
+        } else if (yargsObj.delete) {
+            // Documents can be deleted using the command --delete --title="A string"
+            // console `${deleteMovie} was removed from the database`
+            console.log(await deleteMovie(yargsObj.title, yargsObj.actor, yargsObj.rating, yargsObj.director));
+        } else if (yargsObj.search){
+            // Find
+            console.log(await updateMovie(yargsObj.title, yargsObj.actor, yargsObj.rating, yargsObj.director));
+        }
+        else {
             console.log('Incorrect Command');
         }
       await mongoose.disconnect();  // stops the database from running once it's finished
