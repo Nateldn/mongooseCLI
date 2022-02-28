@@ -1,5 +1,5 @@
 // const tvShow = require("./shows"); // calling tv shows schema
-const Movie = require("./model");
+const {Movie, tvShow} = require("./model");
 
 
 // Create Function =====================
@@ -58,7 +58,6 @@ exports.deleteMovie = async (titleToDelete)  => {
     console.log(error)    
     }
 };
-
 
 
 // TV Show Create Function =====================
