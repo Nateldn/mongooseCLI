@@ -2,7 +2,7 @@
 require("./db/connection"); // will run the connection file in its entirety
 const { default: mongoose } = require("mongoose");
 const yargs = require("yargs");
-const { addMovie, list, updateMovie, deleteMovie, titleToDelete } = require("./movie/functions");
+const { addMovie, list, updateMovie, deleteMovie, titleToDelete, } = require("./movie/functions");
 
 // process.env.PRODUCTION && connection(process.env.MONGO_URI)
 

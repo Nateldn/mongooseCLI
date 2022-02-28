@@ -1,6 +1,7 @@
 // const tvShow = require("./shows"); // calling tv shows schema
-const {Movie, tvShow} = require("./model");
-
+// const {Movie, tvShow} = require("./model");
+const Movie = require("./model");
+//https://stackoverflow.com/questions/50967546/multiple-schema-in-a-file-not-working
 
 // Create Function =====================
 // shorthand export keyword // this fuction will allow us to pass in our data  
@@ -59,14 +60,13 @@ exports.deleteMovie = async (titleToDelete)  => {
     }
 };
 
-
-// TV Show Create Function =====================
-// shorthand export keyword // this fuction will allow us to pass in our data  
-exports.addShow = async (showTitleStr, showGenreStr, showRatingNum)  => { 
-    try {
-        await tvShow.create({showTitle: showTitleStr, showGenre: showGenreStr, showRating: showRatingNum,}); // create is a mongoose method that create a document in the mongoDB database - this 
-        return "TV Show successfully added!";
-    } catch (error) {
-        console.log(error)
-    }
-};
+// // TV Show Create Function =====================
+// // shorthand export keyword // this fuction will allow us to pass in our data  
+// exports.addShow = async (showTitleStr, showGenreStr, showRatingNum)  => { 
+//     try {
+//         await tvShow.create({showTitle: showTitleStr, showGenre: showGenreStr, showRating: showRatingNum,}); // create is a mongoose method that create a document in the mongoDB database - this 
+//         return "TV Show successfully added!";
+//     } catch (error) {
+//         console.log(error)
+//     }
+// };
